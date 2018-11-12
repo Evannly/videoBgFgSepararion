@@ -1,3 +1,4 @@
+### Potential Work ###
 1. Parameter tuning
 2. Foreground consistency
 Weighted l_1 joint sparsity 
@@ -10,6 +11,6 @@ Z_3 -> Z_3' using optical flow
 4. Bi-directional CORPCA
 
 
-Plan:
+### Plan ###
 1. Fix matlab code
 2. Using difference Optical flow prior
