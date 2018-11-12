@@ -4,9 +4,9 @@ Weighted l_1 joint sparsity
 3. Motion compensation
 Z_3 -> Z_3' using optical flow
   
-Option: 
-- Neural network
-- http://eric-yuan.me/coarse-to-fine-optical-flow/
+   Option: 
+   - Neural network
+   - http://eric-yuan.me/coarse-to-fine-optical-flow/
 4. Bi-directional CORPCA
 
 
