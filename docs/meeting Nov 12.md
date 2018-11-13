@@ -9,6 +9,7 @@ Z_3 -> Z_3' using optical flow
    - Neural network
    - http://eric-yuan.me/coarse-to-fine-optical-flow/
 4. Bi-directional CORPCA
+5. Speed up
 
 
 ### Plan ###
