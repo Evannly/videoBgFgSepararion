@@ -26,7 +26,7 @@
 %             "Incorporating Prior Information in Compressive Online Robust Principal Component Analysis," 
 %              in e-print, arXiv, Jan. 2017.
 
-function [xt, vt, Zt, Bt, beta, Wk] = corpca(yt, Phi, Ztm1, Btm1, varargin)
+function [xt, vt, Zt, Bt, beta, Wk] = corpca_Xing(yt, Phi, Ztm1, Btm1, varargin)
 %
 % Solving the problem
 %   min{H(xt,vt|Ztm1,Btm1) = 1/2 ||G*(xt + vt) - yt||_2^2 + lambda*mu*sum(betaj*||Wj(xt-zj)||_1) + mu*||[Btm1 vt]||_*}
