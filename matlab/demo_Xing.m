@@ -126,7 +126,7 @@ for t = 1 : q
 
     fprintf('Optimizing...\n');
     yt = PhiOF*M (:,t); % Input observation    
-    [xt, vt, Zt, Bt, beta, Wk] = corpca(yt, PhiOF, Ztm1OF, Btm1OF); % Performing CORPCA for separation
+    [xt, vt, Zt, Bt, beta, Wk] = corpca_Xing(yt, PhiOF, Ztm1OF, Btm1OF); % Performing CORPCA for separation
     % update prior information
     Ztm1OF = Zt;
     Btm1OF = Bt;
