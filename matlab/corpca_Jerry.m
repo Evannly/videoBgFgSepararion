@@ -26,7 +26,7 @@
 %             "Incorporating Prior Information in Compressive Online Robust Principal Component Analysis," 
 %              in e-print, arXiv, Jan. 2017.
 
-function [xt, vt, Zt, Bt, beta, Wk] = corpca_Xing(yt, Phi, Ztm1, Btm1, varargin)
+function [xt, vt, Zt, Bt, beta, Wk] = corpca_Jerry(yt, Phi_G_c, Ztm1, Btm1, varargin)
 %
 % Solving the problem
 %   min{H(xt,vt|Ztm1,Btm1) = 1/2 ||G*(xt + vt) - yt||_2^2 + lambda*mu*sum(betaj*||Wj(xt-zj)||_1) + mu*||[Btm1 vt]||_*}
@@ -67,24 +67,16 @@ function [xt, vt, Zt, Bt, beta, Wk] = corpca_Xing(yt, Phi, Ztm1, Btm1, varargin)
 
 % Edited by Jerry
 % No compressive sensing!
-
+Phi = Phi_G_c{1};
+G = Phi_G_c{2};
+c = Phi_G_c{3};
 % fprintf('Entering Function!')
 %% Input:
 [m,n] = size(Phi);
 lambda0 = 1/sqrt(n);
-if (m==n)
-    c = yt;
-    G = eye(size(Phi));
-    Phi = eye(size(Phi));
-else
-    fprintf('PINV');tic
-    G = pinv(Phi);
-    fprintf('PINV finish');toc
-    c = G*yt;
-    G = G*Phi;
-end
 %lambdaAdapt = [lambda0 3*lambda0]; % We consider two different lambdas: one for estimating Bt firstly 
 lambdaAdapt = [3*lambda0 lambda0]; % We consider two different lambdas: one for estimating Bt firstly 
+
 %fprintf('size(lambdaAdapt)')
 %fprintf(size(lambdaAdapt))
 %for l = 1:size(lambdaAdapt,2)
