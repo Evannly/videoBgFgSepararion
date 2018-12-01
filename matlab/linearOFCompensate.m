@@ -27,7 +27,7 @@ function imgComp = linearOFCompensate(img, ofObj, factor, vectorize)
     end
     
     imgComp = zeros(size(img));
-    [h, w] = size(img);
+    [h, w, c] = size(img);
     % x'(yy,xx) = x(y,x), 
     % where yy = y + factor*motiony, xx = factor+motionx
     for y = 1:h
@@ -37,12 +37,12 @@ function imgComp = linearOFCompensate(img, ofObj, factor, vectorize)
             yy = y + round(factor * ofObj.Vy(y,x));
             xx = x + round(factor * ofObj.Vx(y,x));
             if (yy>=1) && (yy<=h) && (xx>=1) && (xx<=w)
-                imgComp(yy, xx) = img(y, x);
+                imgComp(yy, xx, :) = img(y, x, :);
             end
         end
     end
     if vectorize
-        imgComp = reshape(imgComp,[h*w, 1]);
+        imgComp = reshape(imgComp,[h*w*c, 1]);
     end
 end
 

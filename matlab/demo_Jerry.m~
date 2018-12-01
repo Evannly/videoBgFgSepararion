@@ -12,8 +12,8 @@
 %% Loading video/images
 addpath(genpath('./')); % Add functions to path
 readVideo = false;      % Read video or images
-resizeScale = 0.2;        % Scale to resize image.
-c = 1;            % Number of Used channels.
+resizeScale = 1;        % Scale to resize image.
+c = 3;            % Number of Used channels.
                         % chanUse=1 means using gray images and =3 using RGB images
 nClip = 30;
 disp('Loading data...');
@@ -39,25 +39,19 @@ else
     imagefiles = dir('./videos/bridge/*.jpg');
     nfiles = length(imagefiles); % Number of files found
 % 
-    [h0, w0, c0] = size(imread([fpath, imagefiles(1).name]));
-
-    h = floor(h0 * resizeScale);
-    w = floor(w0 * resizeScale);
-    c = min(c, c0);          % Correct chanUse
-    images = zeros([h * w * c, nfiles]); % image size (120,160,3)
-    %xiaojian
-%     cropsize = [113 583 554 411];
-%     
-%     cropImg = imcrop(imread([fpath, imagefiles(1).name]),cropsize);
-%     [h0, w0, c0] = size(cropImg);
+%     [h0, w0, c0] = size(imread([fpath, imagefiles(1).name]));
+% 
 %     h = floor(h0 * resizeScale);
 %     w = floor(w0 * resizeScale);
 %     c = min(c, c0);          % Correct chanUse
+%     %images = zeros([h*w,nfiles]);                                  % image size (120,160,3)
 %     images = zeros([h * w * c, nfiles]); % image size (120,160,3)
+    cropImg = crop(imread([fpath, imagefiles(1).name]),[1,1,])
+    [h0, w0, c0] = size();
+    images = zeros([h * w * c, nfiles]); % image size (120,160,3)
 
     for ii = 1:nfiles
         currentfilename = imagefiles(ii).name;
-        %xiaojian
         currentimage = imread([fpath, currentfilename]);
 
         if c == 1
